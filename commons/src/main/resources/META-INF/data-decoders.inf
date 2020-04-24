@@ -14,6 +14,7 @@ org.milyn.javabean.decoders.EnumDecoder
 org.milyn.javabean.decoders.FileDecoder
 org.milyn.javabean.decoders.FloatDecoder
 org.milyn.javabean.decoders.IntegerDecoder
+org.milyn.javabean.decoders.LocalDateDecoder
 org.milyn.javabean.decoders.LongDecoder
 org.milyn.javabean.decoders.MappingDecoder
 org.milyn.javabean.decoders.ShortDecoder
