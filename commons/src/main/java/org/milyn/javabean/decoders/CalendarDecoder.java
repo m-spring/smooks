@@ -26,6 +26,7 @@ import org.milyn.javabean.DecodeType;
 @DecodeType(Calendar.class)
 public class CalendarDecoder extends LocaleAwareDateDecoder implements DataDecoder {
 
+    @Override
     public Object decode(String data) throws DataDecodeException {
         if (decoder == null) {
             throw new IllegalStateException("Calendar decoder not initialised.  A decoder for this type (" + getClass().getName() + ") must be explicitly configured (unlike the primitive type decoders) with a date 'format'. See Javadoc.");

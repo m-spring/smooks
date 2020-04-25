@@ -55,7 +55,7 @@ public class CalendarDecoderTest {
 	@Test
 	public void test_CalendarDecoder_with_swedish_local() throws ParseException {
 		final String dateFormat = "EEE MMM dd HH:mm:ss z yyyy";
-		final String dateString = "ti mar 04 15:25:07 CET 2008";
+		final String dateString = "tis mars 04 15:25:07 CET 2008";
 
         Properties config = new Properties();
 	    CalendarDecoder decoder = new CalendarDecoder();
@@ -67,9 +67,11 @@ public class CalendarDecoderTest {
 	    decoder.setConfiguration(config);
 
 	    Calendar cal_a = (Calendar) decoder.decode( dateString );
+            System.out.println(cal_a != null ? cal_a.toString() : "cal_a = null");
 	    assertEquals("Centraleuropeisk tid", cal_a.getTimeZone().getDisplayName( new Locale("sv", "SE") ) );
 
 	    Calendar cal_b = (Calendar) decoder.decode( dateString );
+            System.out.println(cal_b != null ? cal_b.toString() : "cal_b = null");
 	    assertNotSame(cal_a, cal_b);
 	}
 

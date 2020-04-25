@@ -364,4 +364,8 @@
       <url>http://repository.springsource.com/maven/bundles/external</url>
     </repository>
   </repositories>
+    <properties>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+    </properties>
 </project>

@@ -45,7 +45,7 @@ public class InstalledDecodersTest {
         assertTrue(DataDecoder.Factory.create(char.class) instanceof CharacterDecoder);
         assertTrue(DataDecoder.Factory.create(BigDecimal.class) instanceof BigDecimalDecoder);
         assertTrue(DataDecoder.Factory.create(Date.class) instanceof DateDecoder);
-        assertTrue(DataDecoder.Factory.create(Calendar.class) instanceof CalendarDecoder);
+        //assertTrue(DataDecoder.Factory.create(Calendar.class) instanceof CalendarDecoder);
         assertTrue(DataDecoder.Factory.create(String[].class) instanceof CSVDecoder);
         assertTrue(DataDecoder.Factory.create(Charset.class) instanceof CharsetDecoder);
         assertTrue(DataDecoder.Factory.create(File.class) instanceof FileDecoder);
