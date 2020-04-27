@@ -24,6 +24,7 @@ import org.milyn.util.ClassUtil;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -90,7 +91,6 @@ public interface DataDecoder extends Serializable {
 
         public static Class<? extends DataDecoder> getInstance(Class targetType) {
             loadInstalledDecoders();
-
             if (targetType.isEnum()) {
                 return EnumDecoder.class;
             } else {

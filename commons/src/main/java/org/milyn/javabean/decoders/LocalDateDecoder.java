@@ -2,10 +2,12 @@ package org.milyn.javabean.decoders;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.TimeZone;
+import org.milyn.assertion.AssertArgument;
 
 import org.milyn.javabean.DataDecodeException;
 import org.milyn.javabean.DataDecoder;
@@ -26,7 +28,7 @@ import org.milyn.javabean.DecodeType;
  * @author <a href="mailto:daniel.bevenius@gmail.com">daniel.bevenius@gmail.com</a>
  *
  */
-@DecodeType(Calendar.class)
+@DecodeType(LocalDate.class)
 public class LocalDateDecoder extends LocaleAwareDateDecoder implements DataDecoder {
 
     public Object decode(String data) throws DataDecodeException {
@@ -45,6 +47,17 @@ public class LocalDateDecoder extends LocaleAwareDateDecoder implements DataDeco
             }
         } catch (ParseException e) {
             throw new DataDecodeException("Error decoding Date data value '" + data + "' with decode format '" + format + "'.", e);
+        }
+    }
+    
+    public String encode(Object date) throws DataDecodeException {
+        AssertArgument.isNotNull(date, "date");
+        if(!(date instanceof LocalDate)) {
+            throw new DataDecodeException("Cannot encode Object type '" + date.getClass().getName() + "'.  Must be type '" + LocalDate.class.getName() + "'.");
+        }
+        // Must be sync'd - DateFormat is not synchronized.
+        synchronized(decoder) {
+            return decoder.format((LocalDate) date);
         }
     }
 }

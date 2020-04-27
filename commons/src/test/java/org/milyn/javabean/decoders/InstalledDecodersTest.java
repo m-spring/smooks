@@ -23,6 +23,7 @@ import org.milyn.javabean.DataDecoder;
 import java.io.File;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,11 +46,12 @@ public class InstalledDecodersTest {
         assertTrue(DataDecoder.Factory.create(char.class) instanceof CharacterDecoder);
         assertTrue(DataDecoder.Factory.create(BigDecimal.class) instanceof BigDecimalDecoder);
         assertTrue(DataDecoder.Factory.create(Date.class) instanceof DateDecoder);
-        //assertTrue(DataDecoder.Factory.create(Calendar.class) instanceof CalendarDecoder);
+        assertTrue(DataDecoder.Factory.create(Calendar.class) instanceof CalendarDecoder);
         assertTrue(DataDecoder.Factory.create(String[].class) instanceof CSVDecoder);
         assertTrue(DataDecoder.Factory.create(Charset.class) instanceof CharsetDecoder);
         assertTrue(DataDecoder.Factory.create(File.class) instanceof FileDecoder);
         assertTrue(DataDecoder.Factory.create(Class.class) instanceof ClassDecoder);
+        assertTrue(DataDecoder.Factory.create(LocalDate.class) instanceof LocalDateDecoder);
         assertNull(DataDecoder.Factory.create(getClass()));
     }
 

@@ -10,6 +10,13 @@
     <version>1.7.1</version>
     <relativePath>../testres/pom.xml</relativePath>
   </parent>
+  <distributionManagement>
+        <repository>
+          <id>maven-releases</id>
+          <name>maven-releases</name>
+          <url>http://develop.heliotronic.local:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 
   <name>Milyn :: Commons</name>
   <artifactId>milyn-commons</artifactId>
