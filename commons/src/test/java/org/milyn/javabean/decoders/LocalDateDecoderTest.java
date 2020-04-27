@@ -64,7 +64,7 @@ public class LocalDateDecoderTest {
         Properties config = new Properties();
 	    LocalDateDecoder decoder = new LocalDateDecoder();
 
-	    config.setProperty(CalendarDecoder.FORMAT, dateFormat );
+	    config.setProperty(LocalDateDecoder.FORMAT, dateFormat );
 	    config.setProperty(LocaleAwareDecoder.LOCALE_LANGUAGE_CODE, "sv");
 	    config.setProperty(LocaleAwareDecoder.LOCALE_COUNTRY_CODE, "SE");
 	    config.setProperty(LocaleAwareDecoder.VERIFY_LOCALE, "true");

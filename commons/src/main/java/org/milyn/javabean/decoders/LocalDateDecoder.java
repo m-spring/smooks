@@ -11,6 +11,7 @@ import org.milyn.assertion.AssertArgument;
 
 import org.milyn.javabean.DataDecodeException;
 import org.milyn.javabean.DataDecoder;
+import org.milyn.javabean.DataEncoder;
 import org.milyn.javabean.DecodeType;
 
 /**
@@ -29,8 +30,9 @@ import org.milyn.javabean.DecodeType;
  *
  */
 @DecodeType(LocalDate.class)
-public class LocalDateDecoder extends LocaleAwareDateDecoder implements DataDecoder {
+public class LocalDateDecoder extends LocaleAwareDateDecoder implements DataDecoder, DataEncoder {
 
+    @Override
     public Object decode(String data) throws DataDecodeException {
         if (decoder == null) {
             throw new IllegalStateException("Calendar decoder not initialised.  A decoder for this type (" + getClass().getName() + ") must be explicitly configured (unlike the primitive type decoders) with a date 'format'. See Javadoc.");
@@ -50,6 +52,7 @@ public class LocalDateDecoder extends LocaleAwareDateDecoder implements DataDeco
         }
     }
     
+    @Override
     public String encode(Object date) throws DataDecodeException {
         AssertArgument.isNotNull(date, "date");
         if(!(date instanceof LocalDate)) {
@@ -57,7 +60,10 @@ public class LocalDateDecoder extends LocaleAwareDateDecoder implements DataDeco
         }
         // Must be sync'd - DateFormat is not synchronized.
         synchronized(decoder) {
-            return decoder.format((LocalDate) date);
+            LocalDate ld = (LocalDate) date;
+            Calendar cal = Calendar.getInstance();
+            cal.set(ld.getYear(), ld.getMonthValue(), ld.getDayOfMonth());
+            return decoder.format(cal.getTime());
         }
     }
 }
